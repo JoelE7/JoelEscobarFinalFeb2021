@@ -6,14 +6,12 @@ public class TestCabina {
 
 	@Test
 	public void queVerificaQueCuenteCorrectamenteLaCantidadDeVehiculosQuePaSanPorUnacabina() {
-		
-	}
 
+	}
 
 	@Test
 	public void queVerificaQueSeRecaudeCorrectaMenteElPagoDeUnVehiculo() {
-		
+
 	}
 
-	
 }
