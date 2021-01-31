@@ -12,6 +12,7 @@ public class Cabina {
 	 */
 	private Map<String, Integer> contadorDeVehiculos;
 	private Integer numero;
+	private Integer cantidadDeAutos;
 
 	/*
 	 * 
@@ -24,6 +25,7 @@ public class Cabina {
 	private Double recaudacion;
 
 	public Cabina(Integer numero) {
+		this.cantidadDeAutos = 0;
 		this.numero = numero;
 		this.recaudacion = 0.0;
 		this.tarifaAutoBus = 200.0;
@@ -42,15 +44,18 @@ public class Cabina {
 	public void pagar(Vehiculo vehiculo) {
 		switch (vehiculo.getTipo()) {
 		case "AutoBus":
-			
+			this.recaudacion += this.tarifaAutoBus;
+			contadorDeVehiculos.put(vehiculo.getTipo(), this.cantidadDeAutos++);
 			break;
 		case "Coche":
-			break;
-		
-		case "Moto":
+			this.recaudacion += this.tarifaCoche;
+			contadorDeVehiculos.put(vehiculo.getTipo(), this.cantidadDeAutos++);
 			break;
 
-			
+		case "Moto":
+			this.recaudacion += this.tarifaMoto;
+			contadorDeVehiculos.put(vehiculo.getTipo(), this.cantidadDeAutos++);
+			break;
 		default:
 			break;
 		}
@@ -60,6 +65,14 @@ public class Cabina {
 	 * incrementa el contadorDeVehiculo
 	 */
 	private void contarVehiculo(Vehiculo vehiculo) {
+		Integer contador = 0;
+		for (int i = 0; i < contadorDeVehiculos.size(); i++) {
+			String tipo = vehiculo.getTipo();
+			if((contadorDeVehiculos.containsValue(tipo))) {
+				contador++;
+			}
+
+		}
 
 	}
 

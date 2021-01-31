@@ -8,6 +8,10 @@ public class EstacionPeajeTest {
 	@Test
 	public void queQueObtieneListaDeCabinasOrdenaPorImporteDescendente () {
 		
+		EstacionPeaje e1 = new SaldoInsuficienteError();
+		
+		
+		
 	}
 	
 	

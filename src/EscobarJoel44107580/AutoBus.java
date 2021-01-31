@@ -6,7 +6,7 @@ public class AutoBus extends Vehiculo{
 
 	public AutoBus(String patente, Tag tag) {
 		super(patente);
-		
+		this.tag= tag;
 	}
 
 	@Override
@@ -17,5 +17,15 @@ public class AutoBus extends Vehiculo{
 	public void recargarTag(Double montoAAgregar) {
 		tag.setSaldo(montoAAgregar);
 	}
+
+	public Tag getTag() {
+		return tag;
+	}
+
+	public void setTag(Tag tag) {
+		this.tag = tag;
+	}
+	
+	
 
 }
