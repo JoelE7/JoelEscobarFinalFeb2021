@@ -14,10 +14,11 @@ public class Telepase extends Cabina {
 	public Telepase(Integer numero) {
 		// siempre al momento de crear un telepase se crea el tag 1 con 200 pesos,carga
 		super(numero);
+		this.tags = new HashSet<Tag>();
 		Tag tagInicial = new Tag(1);
 		tagInicial.setSaldo(200.0);
 		this.cargarTag(tagInicial);
-		tags = new HashSet<Tag>();
+		
 	}
 
 	public Boolean cargarTag(Tag tag) {
@@ -38,20 +39,20 @@ public class Telepase extends Cabina {
 	 * 
 	 */
 	public void pagarAutomatico(Vehiculo vehiculo) throws VehiculoNoPermitidoExceptions, TagNoEncontradoException, SaldoInsuficienteError{
-		Double tarifa = 200.0;
-		if(!vehiculo.getTipo().equals("AutoBus")) {
+		AutoBus c = null;
+		if(!(vehiculo instanceof AccesoATags)) {
 			throw new VehiculoNoPermitidoExceptions();
-		}else if (vehiculo.getTipo().equals("AutoBus")) {
-			AutoBus c =(AutoBus) vehiculo;
-			if(!tags.contains(c.getTag())) {
-				throw new TagNoEncontradoException();
-			}else if (tags.contains(c.getTag())) {
-				if(c.getTag().getSaldo()<200.0) {
-					throw new SaldoInsuficienteError();
-				}else {
-					c.getTag().setSaldo(c.getTag().getSaldo()-tarifa);
-				}
-			}
+		}else {
+			 c = (AutoBus) vehiculo;
+			 if(verifcarExiste(c.getTag())) {
+				 throw new TagNoEncontradoException();
+			 }else {
+				 if(c.getTag().getSaldo()<200.0) {
+					 throw new SaldoInsuficienteError();
+				 }else {
+					 c.getTag().setSaldo(c.getTag().getSaldo()-200.0);
+				 }
+			 }
 		}
 		
 		

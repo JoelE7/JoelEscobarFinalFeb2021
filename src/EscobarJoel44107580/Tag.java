@@ -4,7 +4,7 @@ package EscobarJoel44107580;
 /* 
  * Dispositivo para pasar por el telepase 
  */
-public class Tag {
+public class Tag implements Comparable<Tag>{
 	
 	private Integer id;
 	private Double saldo;
@@ -53,6 +53,11 @@ public class Tag {
 		} else if (!id.equals(other.id))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Tag o) {
+		return id-o.id;
 	}
 	
 	

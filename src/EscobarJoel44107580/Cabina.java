@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 import java.util.Map;
 
-public class Cabina {
+public class Cabina implements Comparable<Cabina>{
 
 	/*
 	 * Fornato del Contador de vehiculo ejemplo Clave valor Moto 6 AutoBus 3 Moto 2
@@ -64,7 +64,7 @@ public class Cabina {
 	/*
 	 * incrementa el contadorDeVehiculo
 	 */
-	private void contarVehiculo(Vehiculo vehiculo) {
+	private Integer contarVehiculo(Vehiculo vehiculo) {
 		Integer contador = 0;
 		for (int i = 0; i < contadorDeVehiculos.size(); i++) {
 			String tipo = vehiculo.getTipo();
@@ -72,8 +72,28 @@ public class Cabina {
 				contador++;
 			}
 
-		}
+		}return contador;
 
+	}
+
+	public Double getRecaudacion() {
+		return recaudacion;
+	}
+
+	public void setRecaudacion(Double recaudacion) {
+		this.recaudacion = recaudacion;
+	}
+
+	public Integer getCantidadDeAutos() {
+		return cantidadDeAutos;
+	}
+
+	public void setCantidadDeAutos(Integer cantidadDeAutos) {
+		this.cantidadDeAutos = cantidadDeAutos;
+	}
+	
+	public Integer getCantidadDeAutosQuePasaron() {
+		return contadorDeVehiculos.size();
 	}
 
 	@Override
@@ -99,6 +119,18 @@ public class Cabina {
 		} else if (!numero.equals(other.numero))
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Cabina o) {
+		return numero-o.numero;
+	}
+
+	@Override
+	public String toString() {
+		return "Cabina [contadorDeVehiculos=" + contadorDeVehiculos + ", numero=" + numero + ", cantidadDeAutos="
+				+ cantidadDeAutos + ", tarifaCoche=" + tarifaCoche + ", tarifaMoto=" + tarifaMoto + ", tarifaAutoBus="
+				+ tarifaAutoBus + ", recaudacion=" + recaudacion + "]";
 	}
 
 }

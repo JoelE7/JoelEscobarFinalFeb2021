@@ -1,6 +1,6 @@
 package EscobarJoel44107580;
 
-public class AutoBus extends Vehiculo{
+public class AutoBus extends Vehiculo implements AccesoATags{
 
 	private Tag tag;
 
